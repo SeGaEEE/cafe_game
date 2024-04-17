@@ -1,12 +1,16 @@
-import staff
+
 class owner:
     def __init__(self):
         self.xp=0
         self.money=0
         self.lvl=1
+    def stat(self):
+        print(f'Ваш опыт: {self.xp} XP.\nВаш баланс: {self.money}$,\nВаш уровень: {self.lvl}')
     def personlvlup(self,person):
         if self.money>=(10*person.level) and self.xp>=(10*person.level):
             print(f'Вы повысили уровень с {person.level} до {person.level+1} у: {person.name}\nС вашего баланса списано: {10*person.level}\nОстаток: {self.money}')
+            person.level+=1
+            self.money-=10*person.level
         elif self.money<(10*person.level) and self.xp<(10*person.level):
             print(f'Вам не хватает опыта и денег для повышения уровня у {person.name}. Вам нужно: {(10*person.level)-self.money}$\n{(10*person.level)-self.xp} XP')
         elif self.money<10*person.level:

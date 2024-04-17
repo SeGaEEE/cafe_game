@@ -1,31 +1,25 @@
-from tables import Table
 import random
 import asyncio
 import time
 import asyncio
+from Classes import menu
 class Staff:
     def __init__(self):
         self.level = 1
         self.busy = False
-        self.worktime = 65 - (self.level * 5)
+        self.worktime = 30 - (self.level * 5)
         self.name = random.choice(['Саша', 'Петя', 'Вася', 'Дима'])
     def __str__(self):
         return (f'Работник {self.name} ✪ {self.level}')
-    async def cook(self, table):
+    async def cook(self, table,boss):
         if not self.busy:
-            active_order = table.take_order()
+            active_order = table.take_order(menu.Menu(),boss)
             print(f'Работник {self.name} взял заказ со столика №{table.id} \n'
                   f'Заказ: {active_order[0]} \n'
                   f'Оплата: {active_order[1]} \n'
                   f'Время выполнения заказа: {self.worktime} \n')
             await asyncio.sleep(self.worktime)
+            boss.money+=active_order[1]
+            boss.xp+=self.level
             print(f'Работник {self.name} выаолнил заказ столика №{table.id} \n'
-                  f'Заказ: {active_order[0]} \n'
-                  f'Оплата: {active_order[1]} \n'
-                  f'Время выполнения заказа: {self.worktime}')
-
-
-d = Staff()
-t = Table()
-print(d)
-asyncio.run(d.cook(t))
+                  f'Время затраченное выполнения заказа: {self.worktime}')

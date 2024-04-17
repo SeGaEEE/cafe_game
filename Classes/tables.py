@@ -6,14 +6,13 @@ class Table:
         self.order=''
         self.payment=0
         self.free=True
-    def new_order(self,menu):
+    def take_order(self,menu,boss):
         if self.free:
-            order=menu.takeorder()
+            order=menu.takeorder(boss)
             self.order=order[0]
             self.payment=order[1]
             self.free=False
-    def take_order(self):
-        return [self.order, self.payment]
+            return [self.order, self.payment]
     def __str__(self):
         return f'Заказ: {self.order}. Оплата: {self.payment}. Принести за {self.id} столик.'
 
