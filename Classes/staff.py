@@ -5,7 +5,7 @@ import time
 import asyncio
 class Staff:
     def __init__(self):
-        self.level = 12
+        self.level = 1
         self.busy = False
         self.worktime = 65 - (self.level * 5)
         self.name = random.choice(['Саша', 'Петя', 'Вася', 'Дима'])

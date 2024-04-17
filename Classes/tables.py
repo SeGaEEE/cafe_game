@@ -3,8 +3,8 @@ class Table:
     tableID = itertools.count(1)
     def __init__(self):
         self.id = next(Table.tableID)
-        self.order='111'
-        self.payment=3313
+        self.order=''
+        self.payment=0
         self.free=True
     def new_order(self,menu):
         if self.free:
