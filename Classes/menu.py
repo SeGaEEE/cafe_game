@@ -1,9 +1,10 @@
 from Classes import boss
-import random
+from random import randint
 class Menu:
     def __init__(self):
         self.food={1:['Борщ','Пельмени','Щи','Оливье','Плов','Шашлык','Блины','Котлеты по-киевски','Сельдь под шубой','Толчёнка'],
                    2:['Суши','Роллы','Рамен','Удон','Терияки','Такосяки','Окура-магомо','Темпура','Сашими','Мисо-суп'],
                    3:['Пицца','Паста','Лазанья','Ризотто','Оссобуко','Панцанелла','Минестроне','Тирамису','Капрезе','Равиоли']}
     def takeorder(self,owner):
-        return [self.food.get(owner.lvl)[random.randint(0,9)],owner.lvl]
+        a=randint(1,owner.lvl)
+        return [self.food.get(a)[randint(0,9)],a]
