@@ -4,6 +4,8 @@ class owner:
         self.xp=0
         self.money=0
         self.lvl=1
+        self.personal=[]
+        self.table=[]
     def stat(self):
         print(f'Ваш опыт: {self.xp} XP.\nВаш баланс: {self.money}$\nВаш уровень: {self.lvl}')
     def personlvlup(self,person):
@@ -28,3 +30,25 @@ class owner:
             print(f'Вам не хватает опыта и денег для повышения уровня. Вам нужно ещё: {(20*self.lvl)-self.money}$')
         elif self.xp<20*self.lvl:
             print(f'Вам не хватает опыта и денег для повышения уровня. Вам нужно: {(20*self.lvl) - self.xp} XP')
+    def buynewperson(self,person):
+        if self.money>=30 and self.lvl>=2:
+            self.personal.append(person)
+            self.money-=30
+            print(f'Вы успешно приобрели официанта.\nС вашего баланса списано 30$\nОстаток по балансу: {self.money-30}\nКоличество кадров: {len(self.personal)}')
+        elif self.money<30 and self.lvl<=2:
+            print(f'Вам не хватает уровня и денег для покупки персонала. Вам нужно: {30-self.money}$\n+1 LVL')
+        elif self.money<30:
+            print(f'Вам не хватает денег для покупки персонала. Вам нужно: {30 - self.money}$')
+        elif self.lvl<=30:
+            print(f'Вам не хватает уровня для покупки персонала. Вам нужен еще 1 LVL')
+    def buynewtable(self,table):
+        if self.money>=30 and self.lvl>=2:
+            self.table.append(table)
+            self.money-=30
+            print(f'Вы успешно приобрели стол.\nС вашего баланса списано 30$\nОстаток по балансу: {self.money-30}\nКоличество столов: {len(self.table)}')
+        elif self.money<30 and self.lvl<=2:
+            print(f'Вам не хватает уровня и денег для покупки стола. Вам нужно: {30-self.money}$\n+1 LVL')
+        elif self.money<30:
+            print(f'Вам не хватает денег для покупки стола. Вам нужно: {30 - self.money}$')
+        elif self.lvl<=30:
+            print(f'Вам не хватает уровня для покупки стола. Вам нужен еще 1 LVL')

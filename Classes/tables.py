@@ -12,7 +12,7 @@ class Table:
             self.order=order[0]
             self.payment=order[1]
             self.free=False
-            return [self.order, self.payment]
+            print(f'За столом: {self.tableID} сделали заказ: {self.order}')
     def __str__(self):
         return f'Заказ: {self.order}. Оплата: {self.payment}. Принести за {self.id} столик.'
 
