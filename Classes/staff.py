@@ -7,7 +7,7 @@ class Staff:
     def __init__(self):
         self.level = 1
         self.busy = False
-        self.worktime = 10 - (self.level * 5)
+        self.worktime = 35 - (self.level * 5)
         self.name = random.choice(['Саша', 'Петя', 'Вася', 'Дима'])
     def __str__(self):
         return (f'Работник {self.name} ✪ {self.level}')
