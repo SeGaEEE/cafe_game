@@ -2,9 +2,12 @@ import random
 import asyncio
 import time
 import asyncio
+import itertools
 from Classes import menu
 class Staff:
+    staffID=itertools.count(1)
     def __init__(self):
+        self.id = int(next(Staff.staffID))
         self.level = 1
         self.busy = False
         self.worktime = 35 - (self.level * 5)

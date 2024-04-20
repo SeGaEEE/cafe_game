@@ -1,15 +1,15 @@
 from Classes import staff,tables,menu,boss
 import asyncio
 import os
-menu = menu.Menu
+menu = menu.Menu()
 
-Boss=boss.owner()
+player=boss.owner()
 Staff_list = [staff.Staff()]
 Tables_list = [tables.Table()]
 
-Boss.stat()
+player.stat()
 while True:
-    freeTable = []
+    busyTable = []
     freeStaff = []
     print(f'\n1: Взять заказ\n'
           f'2: Повысить уровень игрока\n'
@@ -19,16 +19,36 @@ while True:
           f'6: Статистика')
     for i in Tables_list:
         if i.free:
-            freeTable.append(i)
-            i.take_order(menu,Boss)
+            busyTable.append(i.tableID)
+            i.take_order(menu=menu,boss=player)
+    for i in Staff_list:
+        if i.busy==False:
+           freeStaff.append(i.staffID)
+
 
     a = int(input())
     if a == 1:
+         if len(freeStaff)>=1:
+            print('Свободные рабочие:')
+            for i in freeStaff:
+                print(f'ID-индетификатор сотрудника: {Staff_list[i-1].staffID}\nИмя: {Staff_list[i].name}\nУровень: {Staff_list[i].level}\n{"_"*100}')
+            inp=int(input('Введите ID-индетификатор нужного сотрудника'))
+            while inp not in freeStaff:
+                    inp=int(input('Данный сотрудник занят/несуществует. Повторите ввод:'))
+            print('Выберите стол:')
+            for i in busyTable:
+                print(f'Номер стола: {Tables_list[i].tableID}\nЗаказ: {Tables_list[i].order}\n{"_"*100}')
+            inp2=int(input('Введите номер нужного стола:'))
+            while inp2 not in busyTable:
+                inp2=int(input('Данный стол свободен/несуществует. Повторите ввод:'))
+            Staff_list[inp-1].cook(Tables_list[inp2-1],menu)
+
+
 
     if a == 2:
-        print(Boss.bosslvlup())
+        print(player.bosslvlup())
     if a == 3:
-        print(Boss.personlvlup())
+        print(player.personlvlup())
     if a == 6:
-        print(Boss.stat())
+        print(player.stat())
 

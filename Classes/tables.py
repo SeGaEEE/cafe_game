@@ -8,9 +8,9 @@ class Table:
         self.free=True
     def take_order(self,menu,boss):
         if self.free:
-            order=menu.takeorder(boss)
-            self.order=order[0]
-            self.payment=order[1]
+            orders=menu.takeorder(boss)
+            self.order=orders[0]
+            self.payment=orders[1]
             self.free=False
             print(f'За столом: {self.tableID} сделали заказ: {self.order}')
     def __str__(self):
