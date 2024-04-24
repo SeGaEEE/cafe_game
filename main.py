@@ -7,6 +7,8 @@ player=boss.owner()
 Staff_list = [staff.Staff()]
 Tables_list = [tables.Table()]
 
+print(Staff_list[0].id)
+
 player.stat()
 while True:
     busyTable = []
@@ -23,15 +25,15 @@ while True:
             i.take_order(menu=menu,boss=player)
     for i in Staff_list:
         if i.busy==False:
-           freeStaff.append(i.staffID)
+           freeStaff.append(i.id)
 
 
     a = int(input())
     if a == 1:
-         if len(freeStaff)>=1:
+        if len(freeStaff)>=1:
             print('Свободные рабочие:')
             for i in freeStaff:
-                print(f'ID-индетификатор сотрудника: {Staff_list[i-1].staffID}\nИмя: {Staff_list[i].name}\nУровень: {Staff_list[i].level}\n{"_"*100}')
+                print(f'ID-индетификатор сотрудника: {i}\nИмя: {Staff_list[i-1].name}\nУровень: {Staff_list[i-1].level}\n{"_"*50}')
             inp=int(input('Введите ID-индетификатор нужного сотрудника'))
             while inp not in freeStaff:
                     inp=int(input('Данный сотрудник занят/несуществует. Повторите ввод:'))
@@ -46,9 +48,9 @@ while True:
 
 
     if a == 2:
-        print(player.bosslvlup())
+        player.bosslvlup()
     if a == 3:
-        print(player.personlvlup())
+        player.personlvlup()
     if a == 6:
-        print(player.stat())
+        player.stat()
 
