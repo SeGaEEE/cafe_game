@@ -1,3 +1,4 @@
+import Classes.staff
 from Classes import staff,tables,menu,boss
 import asyncio
 import os
@@ -7,7 +8,8 @@ player=boss.owner()
 Staff_list = [staff.Staff()]
 Tables_list = [tables.Table()]
 
-print(Staff_list[0].id)
+
+
 
 player.stat()
 while True:
@@ -26,8 +28,6 @@ while True:
     for i in Staff_list:
         if i.busy==False:
            freeStaff.append(i.id)
-
-
     a = int(input())
     if a == 1:
         if len(freeStaff)>=1:
@@ -43,7 +43,7 @@ while True:
             inp2=int(input('Введите номер нужного стола:'))
             while inp2 not in busyTable:
                 inp2=int(input('Данный стол свободен/несуществует. Повторите ввод:'))
-            Staff_list[inp-1].cook(Tables_list[inp2-1],menu)
+            asyncio.run(Staff_list[inp-1].cook(Tables_list[inp2-1],player))
 
 
 

@@ -3,7 +3,7 @@ import asyncio
 import time
 import asyncio
 import itertools
-from Classes import menu
+from Classes import menu, tables, boss
 class Staff:
     staffID=itertools.count(1)
     def __init__(self):
@@ -21,9 +21,10 @@ class Staff:
                   f'Заказ: {active_order[0]} \n'
                   f'Оплата: {active_order[1]} \n'
                   f'Время выполнения заказа: {self.worktime} \n')
-            await asyncio.sleep(self.worktime)
+            await asyncio.sleep(self.worktime-27)
             boss.money+=active_order[1]
             boss.xp+=self.level
             table.free=True
             print(f'Работник {self.name} выполнил заказ столика №{table.id} \n'
                   f'Время затраченное выполнения заказа: {self.worktime}')
+
