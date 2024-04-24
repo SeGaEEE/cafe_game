@@ -21,7 +21,7 @@ while True:
           f'6: Статистика')
     for i in Tables_list:
         if i.free:
-            busyTable.append(i.tableID)
+            busyTable.append(i.id)
             i.take_order(menu=menu,boss=player)
     for i in Staff_list:
         if i.busy==False:
@@ -39,7 +39,7 @@ while True:
                     inp=int(input('Данный сотрудник занят/несуществует. Повторите ввод:'))
             print('Выберите стол:')
             for i in busyTable:
-                print(f'Номер стола: {Tables_list[i].tableID}\nЗаказ: {Tables_list[i].order}\n{"_"*100}')
+                print(f'Номер стола: {i}\nЗаказ: {Tables_list[i-1].order}\n{"_"*100}')
             inp2=int(input('Введите номер нужного стола:'))
             while inp2 not in busyTable:
                 inp2=int(input('Данный стол свободен/несуществует. Повторите ввод:'))
