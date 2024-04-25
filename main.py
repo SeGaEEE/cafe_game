@@ -37,6 +37,7 @@ while True:
             inp=int(input('Введите ID-индетификатор нужного сотрудника: '))
             while inp not in freeStaff:
                     inp=int(input('Данный сотрудник занят/несуществует. Повторите ввод: '))
+            print('_'*100)
             print('Выберите стол:')
             for i in busyTable:
                 print(f'Номер стола: {i}\nЗаказ: {Tables_list[i-1].order}\n{"_"*220}')
