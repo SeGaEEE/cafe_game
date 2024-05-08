@@ -12,7 +12,8 @@ busyTable = []
 freeStaff = []
 player.stat()
 while True:
-
+    busyTable.sort()
+    freeStaff.sort()
     print(f'\n1: Взять заказ\n'
           f'2: Повысить уровень игрока\n'
           f'3: Повысить лвл персонала\n'
