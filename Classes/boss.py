@@ -22,7 +22,7 @@ class owner:
     def bosslvlup(self):
         if self.lvl>1:
             if self.money>=(20*self.lvl) and self.xp>=(20*self.lvl):
-                print(f'Вы повысили уровень с {self.lvl} до {self.lvl+1}\nС вашего баланса списано: {20*self.lvl}\nОстаток: {self.money-20*self.lvl}')
+                print(f'Поздравляем, Вы перешли на новый {self.lvl} уровень!\nДоступны новые блюда в меню!\nС вашего баланса списано: {20*self.lvl}\nОстаток: {self.money-20*self.lvl}')
                 self.lvl+=1
                 self.money-=20*self.lvl
             elif self.money<(self.xp>=(20*self.lvl)) and self.xp<(20*self.lvl):
@@ -43,7 +43,7 @@ class owner:
             if self.money>=30 and self.lvl>=2:
                 self.personal.append(person)
                 self.money-=30
-                print(f'Вы успешно приобрели официанта.\nС вашего баланса списано 30$\nОстаток по балансу: {self.money-30}\nКоличество кадров: {len(self.personal)}')
+                print(f'Вы успешно наняли официанта.\nС вашего баланса списано 30$\nОстаток по балансу: {self.money-30}\nКоличество кадров: {len(self.personal)}')
             elif self.money<30 and self.lvl<2:
                 print(f'Вам не хватает уровня и денег для покупки персонала. Вам нужно: {30-self.money}$ и +1 LVL')
             elif self.money<30:
