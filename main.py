@@ -2,11 +2,14 @@ import Classes.staff
 from Classes import staff,tables,menu,boss
 import asyncio
 import os
-menu = menu.Menu()
+import threading
+import tkinter.messagebox as mb
 
+menu = menu.Menu()
 player=boss.owner()
 Staff_list = player.personal
 Tables_list = player.tabless
+
 
 busyTable = []
 freeStaff = []
@@ -33,6 +36,7 @@ while True:
     if a == 1:
         if len(freeStaff)>=1:
             print('Свободные рабочие:')
+            print(freeStaff, '-freestaff')
             for i in freeStaff:
                 print(f'ID-индетификатор сотрудника: {i}\nИмя: {Staff_list[i-1].name}\nУровень: {Staff_list[i-1].level}\n{"_"*220}')
             inp=int(input('Введите ID-индетификатор нужного сотрудника: '))
@@ -46,9 +50,14 @@ while True:
             while inp2 not in busyTable:
                 inp2=int(input('Данный стол свободен/несуществует. Повторите ввод:'))
             Tables_list[inp2-1].free=True
-            busyTable.pop(inp2-1)
-            asyncio.run(Staff_list[inp-1].cook(Tables_list[inp2-1],player))
-
+            busyTable.pop(busyTable.index(inp2))
+            print(freeStaff)
+            freeStaff.pop(freeStaff.index(inp))
+            thread = threading.Thread(target=Staff_list[inp-1].cook, args=(Tables_list[inp2-1], player))
+            thread.start()
+            print(freeStaff)
+        else:
+            print('Все сотрудники заняты')
 
 
     if a == 2:

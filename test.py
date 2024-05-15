@@ -1,37 +1,29 @@
-import pygame as pg
-import sys
-pg.init()
-from pygame_button import Button
+import random
+from time import sleep
+import itertools
+import tkinter.messagebox as mb
 
-sc = pg.display.set_mode((400, 300))
-sc.fill((200, 255, 200))
+class Staff:
+    def __init__(self):
+        self.level = 1
+        self.busy = False
+        self.worktime = 25 - (self.level * 5)
+        self.name = random.choice(['Саша', 'Петя', 'Вася', 'Дима'])
+
+    def __str__(self):
+        return (f'Работник {self.name} ✪ {self.level}')
+
+    def cook(self):
+        if not self.busy:
+            active_order = [1, 20]
+            msg = f'Работник {self.name} взял заказ со столика №{1} \n Заказ: {active_order[0]} \n Оплата: {active_order[1]} \n Время выполнения заказа: {self.worktime}'
+            mb.showinfo(title="Заказ взят", message=msg)
+            sleep(self.worktime)
+            print(123)
+            msg = f'\n Работник {self.name} выполнил заказ столика №{1} \nВремя затраченное выполнения заказа: {self.worktime}'
+            mb.showinfo(title="Заказ выполнен", message=msg)
 
 
-b1 = Button(20, 20, 20)
-b2 = Button()
 
-
-font = pg.font.Font(None, 72)
-text = font.render("Hello Wold", True, (0, 100, 0))
-place = text.get_rect(center=(200, 150))
-sc.blit(text, place)
-
-pg.display.update()
-
-while 1:
-    for i in pg.event.get():
-        if i.type == pg.QUIT:
-            sys.exit()
-
-    pressed = pg.key.get_pressed()
-    if pressed[pg.K_LEFT]:
-        place.x -= 1
-    elif pressed[pg.K_RIGHT]:
-        place.x += 1
-
-    sc.fill((200, 255, 200))
-    sc.blit(text, place)
-
-    pg.display.update()
-
-    pg.time.delay(20)
+a = Staff()
+a.cook()
