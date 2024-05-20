@@ -1,13 +1,13 @@
 from Classes import staff,tables
 class owner:
     def __init__(self):
-        self.xp=1000
-        self.money=1000
-        self.lvl=1
-        self.personal=[staff.Staff()]
-        self.tabless=[tables.Table()]
+        self.xp = 0
+        self.money = 300
+        self.lvl = 3
+        self.personal = [staff.Staff()]
+        self.tabless = [tables.Table()]
     def stat(self):
-        print(f'Ваш опыт: {self.xp} XP.\nВаш баланс: {self.money}$\nВаш уровень: {self.lvl}')
+        return (f'Ваш опыт: {self.xp} XP.\nВаш баланс: {self.money}$\nВаш уровень: {self.lvl}')
     def personlvlup(self,person):
         if self.money>=(10*person.level) and self.xp>=(10*person.level):
             print(f'Вы повысили уровень с {person.level} до {person.level+1} у: {person.name}\nС вашего баланса списано: {10*person.level}\nОстаток: {self.money}')
