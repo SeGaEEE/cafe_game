@@ -1,0 +1,4 @@
+level=1
+money=100
+xp=0
+staffList =

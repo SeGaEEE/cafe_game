@@ -18,6 +18,7 @@ class Table:
             self.payment = orders[1]
             self.free = False
             mb.showinfo(title='Новый заказ', message=f'За столом: {self.id} сделали заказ: {self.order}')
-
+    def info(self):
+        return (f'|{self.id}| Заказ:{self.order} ({self.payment}₽)')
     def __str__(self):
         return f'Заказ: {self.order}. Оплата: {self.payment}. Принести за {self.id} столик.'

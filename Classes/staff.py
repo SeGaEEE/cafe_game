@@ -4,15 +4,18 @@ import itertools
 import tkinter.messagebox as mb
 
 class Staff:
-    staffID=itertools.count(1)
+    staffID = itertools.count(1)
     def __init__(self):
         self.id = int(next(Staff.staffID))
         self.level = 1
         self.busy = False
-        self.worktime = 15 - (self.level * 5)
-        self.name = random.choice(['Саша', 'Петя', 'Вася', 'Дима'])
+        self.worktime = 30 - (self.level * 5)
+        self.name = random.choice(['Александр', 'Петр', 'Василий', 'Дмитрий', 'Артур', 'Павел', 'Владислав', 'Владимир', 'Иван', 'Савелий', 'Даниил',  'Роман', 'Илья', 'Егор', 'Кирилл',])
     def __str__(self):
-        return (f'Работник {self.name} ✪ {self.level}')
+        if self.busy:
+            return (f'{self.name} (yр.{self.level})|ЗАНЯТ')
+        else:
+            return (f'{self.name} (yр.{self.level})|CBOБОДЕН')
     def cook(self, table,boss):
         self.busy = True
         table.free = False
