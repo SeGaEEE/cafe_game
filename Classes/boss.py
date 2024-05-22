@@ -3,9 +3,9 @@ import tkinter.messagebox as mb
 
 class owner:
     def __init__(self):
-        self.xp = 1000
-        self.money = 5000
-        self.lvl = 3
+        self.xp = 0
+        self.money = 100
+        self.lvl = 1
         self.personal = [staff.Staff()]
         self.tabless = [tables.Table()]
 
